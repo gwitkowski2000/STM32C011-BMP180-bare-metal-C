@@ -20,21 +20,20 @@ float seaLevelPressure;
 uint64_t main_counter = 0;
 
 int main() {
-	SysTick_Config(SystemCoreClock / 1000);
-	bmp180_init();
+  SysTick_Config(SystemCoreClock / 1000);
+  bmp180_init();
 
-		temperature = readTemperature();
-    while (1) {
-			
-			// below command should return 0x55 (BMP180 datasheet) and can be used to check if communcation works properly
-			//read = read8(0xD0);
-			temperature = readTemperature();
-			delay_ms(50);
-			pressure = readPressure() / 100.0;
-			delay_ms(50);
-			altitude = readAltitude();
-			delay_ms(50);
-			seaLevelPressure = readSealevelPressure() / 100.0;
-			main_counter++;
-		}
+  temperature = readTemperature();
+  while (1) {	
+    // below command should return 0x55 (BMP180 datasheet) and can be used to check if communcation works properly
+    //read = read8(0xD0);
+    temperature = readTemperature();
+    delay_ms(50);
+    pressure = readPressure() / 100.0;
+    delay_ms(50);
+    altitude = readAltitude();
+    delay_ms(50);
+    seaLevelPressure = readSealevelPressure() / 100.0;
+    main_counter++;
+  }
 }
